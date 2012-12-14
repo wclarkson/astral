@@ -15,17 +15,16 @@ function Ship(x,y,angle) {
 	this.alpha = 0;
 	this.omega = 0
 	this.reload = 0;
+	this.pts = [[0,-12],[-7,3],[7,3]];
+	this.projs = new Projectiles();
 }
 
 Ship.prototype.render = function(context) {
-	context.strokeStyle = "#FF0000";
+	context.strokeStyle = "#000000";
 	context.beginPath();
 	context.translate(this.x,this.y);
 	context.rotate(this.angle);
-	context.moveTo(0,-12);
-	context.lineTo(-7,3);
-	context.lineTo(7,3);
-	context.lineTo(0,-12);
+	drawPoly(this.pts,context);
 	context.stroke();
 	if (this.thrust>0) {
 		context.strokeStyle = "#E0B21B";
@@ -41,6 +40,7 @@ Ship.prototype.render = function(context) {
 	// context.lineTo(this.fx,this.fy);
 	// context.stroke();
 	context.translate(-this.x,-this.y);
+	this.projs.render(context);
 };
 
 Ship.prototype.update = function(canvas,dt) {
@@ -62,15 +62,16 @@ Ship.prototype.update = function(canvas,dt) {
 	if (this.reload>0) {
 		this.reload--;
 	}
+	this.projs.update(canvas,dt);
 };
 
 Ship.prototype.fire = function() {
 	if (this.reload==0) {
 		var x = this.x + 10*Math.sin(this.angle);
 		var y = this.y - 10*Math.cos(this.angle);
-		var vx = this.vx + 150*Math.sin(this.angle);
-		var vy = this.vy -150*Math.cos(this.angle);
-		p.add(x,y,vx,vy);
+		var vx = this.vx + 500*Math.sin(this.angle);
+		var vy = this.vy -500*Math.cos(this.angle);
+		this.projs.add(x,y,vx,vy);
 		this.reload = 25;	
 	}
 };

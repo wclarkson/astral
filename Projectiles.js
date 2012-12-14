@@ -22,9 +22,13 @@ Projectiles.prototype.update = function(canvas,dt) {
 Projectiles.prototype.render = function(context) {
 	for (var i=0;i<this.elems.length;i++) {
 		var pt = this.elems[i];
-		context.fillStyle = "#AAAA00";
+		context.fillStyle = "#FF0000";
 		context.beginPath();
 		context.arc(pt.x,pt.y,2,0,2*Math.PI,true);
 		context.fill();
 	}
+};
+
+Projectiles.prototype.kill = function(i) {
+	this.elems.splice(i,1);
 };

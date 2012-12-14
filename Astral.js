@@ -1,22 +1,17 @@
-var b;
-var p;
+var phys;
 
 function initialize() {
-	setInterval(draw,20);
-	angle = 0;
-	b = new Ship(100,100,Math.PI/2);
-	p = new Projectiles();
+	setInterval(draw,1000/30);
+	phys = new Physics();
 }
 
 function draw() {
 	var canvas = document.getElementById('canvasTest');
 	var context = canvas.getContext('2d');
-	context.fillStyle = "#222222";
+	context.fillStyle = "#EEEEEE";
 	context.fillRect(0,0,canvas.width,canvas.height);
-	b.update(canvas,0.01);
-	b.render(context);
-	p.update(canvas,0.01);
-	p.render(context);
+	phys.update(canvas,0.01);
+	phys.render(context);
 }
 
 initialize();
