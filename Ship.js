@@ -67,11 +67,11 @@ Ship.prototype.update = function(canvas,dt) {
 
 Ship.prototype.fire = function() {
 	if (this.reload==0) {
-		var x = this.x + 10*Math.sin(this.angle);
-		var y = this.y - 10*Math.cos(this.angle);
-		var vx = this.vx + 500*Math.sin(this.angle);
-		var vy = this.vy -500*Math.cos(this.angle);
+		var x = this.x + 7*Math.sin(this.angle);
+		var y = this.y - 7*Math.cos(this.angle);
+		var vx = this.vx + 600*Math.sin(this.angle);
+		var vy = this.vy -600*Math.cos(this.angle);
 		this.projs.add(x,y,vx,vy);
-		this.reload = 25;	
+		this.reload = 0;	
 	}
 };

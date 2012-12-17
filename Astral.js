@@ -11,6 +11,7 @@ function draw() {
 	context.fillStyle = "#EEEEEE";
 	context.fillRect(0,0,canvas.width,canvas.height);
 	phys.update(canvas,0.01);
+	drawGrid(10,canvas);
 	phys.render(context);
 }
 

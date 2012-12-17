@@ -17,10 +17,10 @@ Rocks.prototype.update = function(canvas,dt) {
 		var pt = this.elems[i];
 		pt.x += pt.vx*dt;
 		pt.y += pt.vy*dt;
-		if ((pt.x<0)||(pt.x>canvas.width)||(pt.y<0)||(pt.y>canvas.height)) {
-			this.elems.splice(i,1);
-			i--;
-		}
+		// if ((pt.x<0)||(pt.x>canvas.width)||(pt.y<0)||(pt.y>canvas.height)) {
+		// 	this.elems.splice(i,1);
+		// 	i--;
+		// }
 	}
 };
 

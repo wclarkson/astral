@@ -6,6 +6,21 @@ function drawPoly(pts,context) {
 	context.lineTo(pts[0][0],pts[0][1]);
 }
 
+function drawGrid(spacing,canvas) {
+	var context = canvas.getContext('2d');
+	context.beginPath();
+	context.strokeStyle = "#DDDDDD";
+	for (var i=-canvas.width;i<=canvas.width;i+=spacing) {
+		context.moveTo(i,-canvas.width);
+		context.lineTo(i,canvas.height);
+	}
+	for (i=-canvas.height;i<=canvas.height;i+=spacing) {
+		context.moveTo(-canvas.height,i);
+		context.lineTo(canvas.height,i);
+	}
+	context.stroke();
+}
+
 function pointInTri(x,y,pts) {
 	x1 = pts[0][0]; x2 = pts[1][0]; x3 = pts[2][0];
 	y1 = pts[0][1]; y2 = pts[1][1]; y3 = pts[2][1];

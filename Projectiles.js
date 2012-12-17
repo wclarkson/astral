@@ -3,13 +3,20 @@ function Projectiles() {
 }
 
 Projectiles.prototype.add = function(xin,yin,vxin,vyin) {
-	temp = {x: xin, y: yin, vx: vxin, vy: vyin};
+	temp = {	x: xin, y: yin,
+				vx: vxin, vy: vyin,
+				ax: 0, ay: 0,
+				fx: 0, fy: 0		};
 	this.elems[this.elems.length] = temp;
 };
 
 Projectiles.prototype.update = function(canvas,dt) {
 	for (var i=0;i<this.elems.length;i++) {
 		var pt = this.elems[i];
+		pt.ax = pt.fx/1;
+		pt.ay = pt.fy/1;
+		pt.vx += pt.ax*dt;
+		pt.vy += pt.ay*dt;
 		pt.x += pt.vx*dt;
 		pt.y += pt.vy*dt;
 		if ((pt.x<0)||(pt.x>canvas.width)||(pt.y<0)||(pt.y>canvas.height)) {

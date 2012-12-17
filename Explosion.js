@@ -1,9 +1,9 @@
 function Explosion(xin,yin,mag) {
 	console.log("Making new explosion.");
 	this.elems = new Array();
-	this.lifespan = 50;
-	for (var i=0;i<2*Math.PI;i+=Math.PI/8+0.2*Math.random()) {
-		var v0 = 400 + 30*Math.random();
+	this.lifespan = 30;
+	for (var i=0;i<2*Math.PI;i+=(0.5/mag)*Math.PI/8+0.5*Math.random()) {
+		var v0 = mag*30 + 300*Math.random();
 		temp = {x: xin, y: yin, vx: v0*Math.cos(i), vy: -v0*Math.sin(i)};
 		this.elems[this.elems.length] = temp;
 	}
